@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatchTalento - Conectando Talento en México</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS GENERALES (Reset, Tipografía y NUEVO FONDO) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            /* NUEVO FONDO: Negro con degradado dorado radial sutil */
+            background-color: #000000;
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            color: #e0e0e0; /* Texto gris claro para que resalte */
+            line-height: 1.8;
+            overflow-x: hidden;
+            animation: fadeInPage 1s ease-out;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- HEADER CON DEGRADADO DORADO PROFUNDO --- */
+        header {
+            /* Degradado dorado elegante y oscuro */
+            background: linear-gradient(135deg, #1a1100 0%, #4d3900 100%);
+            color: white;
+            padding: 100px 20px; /* Más espacio arriba y abajo */
+            text-align: center;
+            position: relative;
+            border-bottom: 2px solid #664d00; /* Línea dorada sutil */
+        }
+
+        header h1 {
+            font-size: 4rem; /* Letras GRANDES */
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            /* Texto con brillo dorado */
+            background: linear-gradient(to bottom, #ffffff, #ffe066);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.6rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL Y CARDS --- */
+        .container {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: #111111; /* Fondo de tarjeta casi negro */
+            padding: 50px;
+            border-radius: 20px;
+            /* Sombra y borde dorado muy suave */
+            box-shadow: 0 10px 30px rgba(255, 224, 102, 0.03);
+            border: 1px solid #222222;
+            margin-bottom: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            /* Brillo dorado más intenso en hover */
+            box-shadow: 0 15px 40px rgba(255, 224, 102, 0.08);
+            border-color: #444444;
+        }
+
+        .card h2 {
+            color: #ffe066; /* Títulos dorados */
+            margin-bottom: 30px;
+            font-size: 2.3rem;
+            font-weight: 600;
+            border-bottom: 2px solid #333333;
+            padding-bottom: 15px;
+        }
+
+        /* --- ESTILOS DE FORMULARIO (Labels y Campos Grandes) --- */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #cccccc;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 18px 22px;
+            background-color: #1a1a1a; /* Fondo oscuro para los campos */
+            border: 2px solid #333333;
+            border-radius: 12px;
+            font-size: 1.15rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #ffe066; /* Borde dorado al enfocar */
+            background-color: #222222;
+            box-shadow: 0 0 0 4px rgba(255, 224, 102, 0.1);
+        }
+
+        /* Input file estilizado */
+        .form-control-file {
+            padding: 15px;
+            background-color: #1a1a1a;
+            border: 2px dashed #444444;
+            cursor: pointer;
+            color: #aaaaaa;
+        }
+
+        .form-control-file:hover {
+            border-color: #666666;
+            background-color: #222222;
+        }
+
+        /* --- BOTONES GRANDES Y DORADOS --- */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 22px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Botón dorado con efecto de brillo */
+        .btn-gold {
+            background: linear-gradient(135deg, #ffe066 0%, #cc9900 100%);
+            color: #1a1100;
+            box-shadow: 0 6px 20px rgba(204, 153, 0, 0.3);
+        }
+
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #fff0b3 0%, #e6b800 100%);
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(204, 153, 0, 0.4);
+        }
+
+        /* Botón gris oscuro para la segunda opción */
+        .btn-dark {
+            background-color: #222222;
+            color: #ffe066;
+            border: 2px solid #ffe066;
+        }
+
+        .btn-dark:hover {
+            background-color: #ffe066;
+            color: #1a1100;
+        }
+
+        /* --- SECCIÓN EMPRESAS (Variación sutil) --- */
+        .card-enterprise {
+            background: #0d0d0d;
+            border: 1px solid #1a1a1a;
+        }
+
+        .card-enterprise h2 {
+            color: #cc9900;
+            border-color: #1a1a1a;
+        }
+
+        .card-enterprise .form-group label {
+            color: #999999;
+        }
+
+        .card-enterprise .form-control {
+            border-color: #1a1a1a;
+        }
+
+        .card-enterprise .form-control:focus {
+            border-color: #cc9900;
+        }
+
+        /* --- PIE DE PÁGINA (Footer) --- */
+        footer {
+            text-align: center;
+            padding: 70px 20px;
+            background-color: #000000;
+            color: #555555;
+            margin-top: 80px;
+            border-top: 1px solid #1a1a1a;
+            font-size: 1.1rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        /* --- ADAPTACIÓN A MÓVILES --- */
+        @media (max-width: 768px) {
+            header { padding: 80px 20px; }
+            header h1 { font-size: 3rem; }
+            header p { font-size: 1.3rem; }
+            .container { margin: 50px auto; }
+            .card { padding: 35px; border-radius: 15px; }
+            .card h2 { font-size: 1.9rem; }
+            .btn { font-size: 1.2rem; padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>MatchTalento</h1>
+        <p>Encuentra tu próximo empleo en México con la elegancia y distinción que mereces. Sube tu CV y destaca.</p>
+    </header>
+
+    <div class="container">
+        <!-- CARD PARA CANDIDATOS -->
+        <div class="card">
+            <h2>Crea tu Perfil Profesional Premium</h2>
+            <!-- FORMULARIO MODIFICADO CON ATRIBUTOS DE NETLIFY -->
+            <form name="candidatos" method="POST" data-netlify="true" enctype="multipart/form-data" id="formCandidatos">
+                <input type="hidden" name="form-name" value="candidatos" />
+                
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej. Juan Pérez López" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" class="form-control" placeholder="ejemplo@correo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ubicacion">Ciudad y Estado en México</label>
+                    <input type="text" id="ubicacion" name="ubicacion" class="form-control" placeholder="Ej. Monterrey, Nuevo León" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="area">Tu Área de Especialidad</label>
+                    <select id="area" name="area" class="form-control" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="ventas">Dirección de Ventas y Comercial</option>
+                        <option value="administracion">Administración y Finanzas</option>
+                        <option value="tecnologia">Liderazgo Tecnológico e IT</option>
+                        <option value="produccion">Operaciones y Cadena de Suministro</option>
+                        <option value="otros">Otros perfiles ejecutivos</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cv">Adjunta tu CV (solo PDF, máx. 8 MB)</label>
+                    <input type="file" id="cv" name="cv" class="form-control form-control-file" accept=".pdf" required>
+                </div>
+
+                <button type="submit" class="btn btn-gold">¡Subir mi CV y Destacar!</button>
+            </form>
+        </div>
+
+        <!-- CARD PARA EMPRESAS -->
+        <div class="card card-enterprise">
+            <h2>¿Buscas talento excepcional para tu empresa?</h2>
+            <p style="margin-bottom: 30px; font-size: 1.2rem; color: #777777;">Estamos reuniendo a los mejores perfiles de México. Déjanos tus datos y te contactaremos para presentarte soluciones de reclutamiento exclusivas.</p>
+            <form name="empresas" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="empresas" />
+                <div class="form-group">
+                    <label for="empresa">Nombre de tu Empresa</label>
+                    <input type="text" id="empresa" name="empresa" class="form-control" placeholder="Ej. Corporativo del Norte" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo-empresa">Correo Corporativo</label>
+                    <input type="email" id="correo-empresa" name="correo-empresa" class="form-control" placeholder="reclutamiento.premium@tuempresa.com" required>
+                </div>
+                <button type="submit" class="btn btn-dark">Me interesa contratar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 MatchTalento. Todos los derechos reservados.</p>
+        <p style="font-size: 0.9rem; opacity: 0.6;">Tu información está protegida conforme a la Ley de Datos Personales en México.</p>
+    </footer>
+
+    <!-- SCRIPT DE VALIDACIÓN DE ARCHIVOS DE SUBIDA -->
+    <script>
+      const form = document.getElementById('formCandidatos');
+      const fileInput = document.getElementById('cv');
+
+      form.addEventListener('submit', function (event) {
+        const file = fileInput.files[0];
+
+        if (file) {
+          // 1. Validar extensión o tipo de archivo (solo PDF)
+          if (file.type !== 'application/pdf' && !file.name.endsWith('.pdf')) {
+            alert('Por favor, selecciona únicamente un archivo en formato PDF.');
+            event.preventDefault();
+            return;
+          }
+
+          // 2. Validar tamaño máximo (8 MB permitidos por Netlify)
+          const maxSizeInBytes = 8 * 1024 * 1024; // 8MB
+          if (file.size > maxSizeInBytes) {
+            alert('El archivo es demasiado pesado. El límite permitido por la plataforma es de 8 MB.');
+            event.preventDefault();
+            return;
+          }
+        }
+      });
+    </script>
+
+</body>
+</html>
